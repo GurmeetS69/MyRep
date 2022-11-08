@@ -6,6 +6,8 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 import javax.persistence.*;
 import javax.transaction.Transactional;
 
@@ -17,22 +19,34 @@ import javax.transaction.Transactional;
 public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "dept_id")
+    @Column(name = "dept_Id")
     private Long deptId;
     @Column
     private String dept_name;
-	public Long getdeptId() {
+	
+    @OneToMany(cascade=CascadeType.ALL)
+    @JoinColumn(name= "dept_ID",referencedColumnName="dept_Id")
+    private List<Employee> employee;
+    
+	public List<Employee> getEmployee() {
+		return employee;
+	}
+	public void setEmployee(List<Employee> employee) {
+		this.employee = employee;
+	}
+	public Long getDeptId() {
 		return deptId;
 	}
-	public void setdeptId(Long deptId) {
+	public void setDeptId(Long deptId) {
 		this.deptId = deptId;
 	}
-	public String getdept_name() {
+	public String getDept_name() {
 		return dept_name;
 	}
-	public void setdept_name(String dept_name) {
+	public void setDept_name(String dept_name) {
 		this.dept_name = dept_name;
 	}
+	
 
     
 

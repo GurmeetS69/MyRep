@@ -22,11 +22,9 @@ public class Employee {
     private String empName;
     @Column
     private Integer empAge;
+    @Column
+    private String empMail;
     
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "dept_id")
-    private Department department;
-
 	public Long getEmpId() {
 		return empId;
 	}
@@ -50,15 +48,14 @@ public class Employee {
 	public void setEmpAge(Integer empAge) {
 		this.empAge = empAge;
 	}
+	
+	public String getEmpMail() {
+			return empMail;
+		}
 
-	public Department getAddress() {
-		return department;
-	}
-
-	public void setAddress(Department department) {
-		this.department = department;
-	}
-    
+	public void setEmpMail(String empMail) {
+			this.empMail = empMail;
+		}
     
 
 

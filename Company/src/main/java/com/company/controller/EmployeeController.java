@@ -23,7 +23,7 @@ public class EmployeeController {
     @PostMapping("/saveEmployees")
     public ResponseEntity<String> saveEmployees(@RequestBody List<Employee> empData) {
         empRepository.saveAll(empData);
-        return ResponseEntity.ok("Data saved");
+        return ResponseEntity.ok("Employees added successfully");
     }
 
     @GetMapping("/getEmployees")
@@ -38,4 +38,8 @@ public class EmployeeController {
 		
 		return ResponseEntity.ok(employee);
 	}
+    @GetMapping("/employeesbydept/{id}")
+      public List<Employee> getEmployeess(@PathVariable long id){
+      return empRepository.findByName(id);
+}
 }
